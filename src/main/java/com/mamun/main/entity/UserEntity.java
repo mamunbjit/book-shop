@@ -15,13 +15,13 @@ import java.util.List;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userId;
+    private Long userId;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
     private String address;
-    private String role;
+    private String role="USER";
 
     // One-to-Many relationship with Borrowed_Books
     @OneToMany(mappedBy = "user")
@@ -31,6 +31,10 @@ public class UserEntity {
     // One-to-Many relationship with Reserved_Books (Optional)
     @OneToMany(mappedBy = "user")
     private List<ReservationEntity> reservedBooks;
+
+    public Long getId() {
+        return this.userId;
+    }
 
     // One-to-One relationship with UserHistory
     //@OneToOne(mappedBy = "user")
